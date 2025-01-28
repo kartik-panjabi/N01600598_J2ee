@@ -15,7 +15,7 @@ public class Week2AppApplication {
 
         GreetingService greetingService = context.getBean(GreetingService.class);
 
-        System.out.println(greetingService.greeting());
+        System.out.println("\n"+ greetingService.greeting());
 
 
 
