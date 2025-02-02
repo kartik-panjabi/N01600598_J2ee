@@ -2,10 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
 </head>
 <body>
+<div align="center">
+    <h1>Employee List</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through the employees list -->
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.id}"></td>
+            <td th:text="${employee.first_name}"></td>
+            <td th:text="${employee.last_name}"></td>
+            <td th:text="${employee.email}"></td>
+            <td>
+                <!-- Edit link with the correct ID -->
+                <a th:href="@{'/employees/update/' + ${employee.id}}">Edit</a>
 
-    Welcome Home !
+                <a th:href="@{'/employees/delete/' + ${employee.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <a href="employees/add">Add New Employee</a>
+</div>
 </body>
 </html>
