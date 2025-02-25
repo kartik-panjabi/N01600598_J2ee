@@ -1,4 +1,4 @@
-package com.humber.n01600598.n01600598_panjabi_assignment2;
+package com.humber.n01600598;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

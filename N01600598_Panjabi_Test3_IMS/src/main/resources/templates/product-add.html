@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Add Product</title>
+</head>
+<body>
+    <h2> Add product details</h2>
+    <form action="/products/save" method="post">
+        <label for="name"> Product name :</label>
+        <input type="text" name="name" id="name">
+        <br>
+
+
+        <label for="description">Product Description :</label>
+        <input type="text" name="description" id="description">
+        <br>
+
+        <label for="price">Price :</label>
+        <input type="number" name="price" id="price">
+        <br>
+
+        <label for="stock">Stock :</label>
+        <input type="number" name="stock" id="stock">
+        <br>
+
+        <button type="submit" value="Add Product"></button>
+
+    </form>
+</body>
+</html>
