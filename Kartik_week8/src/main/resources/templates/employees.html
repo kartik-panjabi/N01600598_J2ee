@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employees</title>
+    <script>
+        function loadEmployees() {
+            fetch('/api/employees')
+                .then(response => response.json())
+                .then(data => {
+                    let tableBody = document.getElementById("employeeTableBody");
+                    tableBody.innerHTML = "";
+
+                    data.forEach(employee => {
+                        let row = `<tr>
+                            <td>${employee.id}</td>
+                            <td>${employee.firstName}</td>
+                            <td>${employee.lastName}</td>
+                            <td>${employee.salary}</td>
+                            <td>
+
+                                <a href="/employees/edit?id=${employee.id}">Edit</a>
+                                <button onclick="deleteEmployee(${employee.id})">Delete</button>
+                            </td>
+                        </tr>`;
+                        tableBody.innerHTML += row;
+                    });
+                });
+        }
+
+        function deleteEmployee(id) {
+            fetch(`/api/employees/${id}`, { method: 'DELETE' })
+                .then(() => loadEmployees());
+        }
+
+        window.onload = loadEmployees;
+    </script>
+</head>
+<body>
+<h2>Employee List</h2>
+<a th:href="@{/employees/add}">Add Employee</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Salary</th>
+        <th>Actions</th>
+    </tr>
+    <tbody id="employeeTableBody"></tbody>
+</table>
+</body>
+</html>
